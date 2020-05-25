@@ -42,4 +42,5 @@ wstool merge -t src $ROS_DISTRO-$ROS_PKG.rosinstall
 wstool update -t src
 echo "Rebuild your workspace"
 ./src/catkin/bin/catkin_make_isolated --install
-
+echo "source ~/ros_catkin_ws/install_isolated/setup.bash" >> ~/.bashrc
+echo "Build completed"
