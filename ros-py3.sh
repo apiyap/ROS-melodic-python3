@@ -2,6 +2,24 @@
 set -e
 ROS_PKG=desktop_full  #desktop_full,desktop,ros-base se https://www.ros.org/reps/rep-0131.html#variants
 ROS_DISTRO=melodic
+echo "Preparing.."
+echo "export ROS_PYTHON_VERSION=3" >> ~/.bashrc
+echo "export PYTHONPATH=/usr/local/python/cv2/python-3.6/:/usr/local/python/cv2/python-3.6/" >> ~/.bashrc
+source ~/.bashrc
+sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
+echo "Generic (pip):"
+sudo pip3 install -U rosdep rosinstall_generator wstool rosinstall
+sudo pip3 install --upgrade setuptools
+echo "Initializing rosdep"
+FILE=/etc/ros/rosdep/sources.list.d/20-default.list
+if test -f "$FILE"; then
+    echo "$FILE exist"
+    sudo rm $FILE
+fi
+
+sudo rosdep init
+rosdep update
+
 echo "Installation"
 echo "Create a catkin Workspace"
 mkdir -p ~/ros_catkin_ws
