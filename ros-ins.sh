@@ -1,3 +1,4 @@
+#!/bin/bash
 set -e
 echo "Installation"
 echo "Create a catkin Workspace"
