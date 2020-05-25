@@ -3,10 +3,10 @@ set -e
 ROS_PKG=desktop_full  #desktop_full,desktop,ros-base se https://www.ros.org/reps/rep-0131.html#variants
 ROS_DISTRO=melodic
 echo "Preparing.."
-echo "export ROS_PYTHON_VERSION=3" >> ~/.bashrc
-echo "export PYTHONPATH=/usr/local/python/cv2/python-3.6/:/usr/local/python/cv2/python-3.6/" >> ~/.bashrc
+export ROS_PYTHON_VERSION=3
+export PYTHONPATH=/usr/local/python/cv2/python-3.6/:/usr/local/python/cv2/python-3.6/
 source ~/.bashrc
-sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
+sudo apt-get install -y python-rosdep python3-dev python3-pip python-rosinstall-generator python-wstool python-rosinstall build-essential
 echo "Generic (pip):"
 sudo pip3 install -U rosdep rosinstall_generator wstool rosinstall
 sudo pip3 install --upgrade setuptools
