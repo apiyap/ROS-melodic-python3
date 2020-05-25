@@ -1,10 +1,18 @@
 #!/bin/bash
 set -e
+ROS_PKG=desktop_full  #desktop_full,desktop,ros-base se https://www.ros.org/reps/rep-0131.html#variants
+ROS_DISTRO=melodic
+
 echo "Installation"
 echo "Create a catkin Workspace"
 mkdir -p ~/ros_catkin_ws
 cd ~/ros_catkin_ws
 echo "ros install generator .."
+FILE=$ROS_DISTRO-$ROS_PKG.rosinstall
+if test -f "$FILE"; then
+    echo "$FILE exist"
+    sudo rm $FILE
+fi
 rosinstall_generator $ROS_PKG --rosdistro $ROS_DISTRO --deps --tar > $ROS_DISTRO-$ROS_PKG.rosinstall
 
 wstool init -j4 src $ROS_DISTRO-$ROS_PKG.rosinstall
