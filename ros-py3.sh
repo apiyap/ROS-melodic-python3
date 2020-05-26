@@ -48,4 +48,9 @@ wstool update -t src
 echo "Rebuild your workspace"
 ./src/catkin/bin/catkin_make_isolated --install
 echo "source ~/ros_catkin_ws/install_isolated/setup.bash" >> ~/.bashrc
+echo "export PATH=$PATH:~/ros_catkin_ws/install_isolated/bin:~/ros_catkin_ws/install_isolated/lib" >> ~/.bashrc
+echo "export ROS_PYTHON_VERSION=3" >> ~/.bashrc
+echo "alias catkin_make=catkin_make_isolated" >> ~/.bashrc
+
+source ~/ros_catkin_ws/install_isolated/setup.bash
 echo "Build completed"
