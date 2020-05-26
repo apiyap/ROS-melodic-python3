@@ -7,8 +7,19 @@ from [here->>](https://github.com/apiyap/buildOpenCV3)
 chmod +x ros-py3.sh
 ./ros-py3.sh
 </pre>
+# Install additional packages
+For example install ros_control package
+<pre>
+cd CATKIN_ROS_WORKSPACE/src
+wstool init
+wstool merge https://raw.github.com/ros-controls/ros_control/melodic-devel/ros_control.rosinstall
+wstool update
+cd ..
+rosdep install --from-paths . --ignore-src --rosdistro melodic -y
+catkin_make
+</pre>
 
-#Note
+# Note
 
 Please remove /opt/ros/melodic/bin: from PATH
 and make sure add follwing to ~/.bashrc
