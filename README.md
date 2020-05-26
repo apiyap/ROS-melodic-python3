@@ -12,7 +12,7 @@ Please see package name from. https://github.com/ros/rosdistro/blob/master/melod
 
 <pre>
 chmod +x add-ros-pkg.sh
-./add-ros-pkg.sh
+./add-ros-pkg.sh ros_control
 </pre>
 
 # Note
