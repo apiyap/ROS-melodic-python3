@@ -8,3 +8,11 @@ chmod +x ros-py3.sh
 ./ros-py3.sh
 </pre>
 
+#Note
+
+Please remove /opt/ros/melodic/bin: from PATH
+and add follwing ti ~/.bashrc
+<pre>
+source ~/ros_catkin_ws/install_isolated/setup.bash
+export PATH=$PATH:~/ros_catkin_ws/install_isolated/bin
+</pre>
