@@ -8,19 +8,11 @@ chmod +x ros-py3.sh
 ./ros-py3.sh
 </pre>
 # Install additional packages
-For example install ros_control package
-<pre>
-cd CATKIN_ROS_WORKSPACE/src
-wstool init
-wstool merge https://raw.github.com/ros-controls/ros_control/melodic-devel/ros_control.rosinstall
-#OR if wstool init  Error try
-rosinstall_generator robot --rosdistro melodic --deps --tar > melodic-robot.rosinstall
-wstool merge melodic-robot.rosinstall -t src
+Please see package name from. https://github.com/ros/rosdistro/blob/master/melodic/distribution.yaml
 
-wstool update
-cd ..
-rosdep install --from-paths . --ignore-src --rosdistro melodic -y
-catkin_make
+<pre>
+chmod +x add-ros-pkg.sh
+./add-ros-pkg.sh
 </pre>
 
 # Note
