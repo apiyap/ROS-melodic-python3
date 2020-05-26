@@ -13,6 +13,10 @@ For example install ros_control package
 cd CATKIN_ROS_WORKSPACE/src
 wstool init
 wstool merge https://raw.github.com/ros-controls/ros_control/melodic-devel/ros_control.rosinstall
+#OR if wstool init  Error try
+rosinstall_generator robot --rosdistro melodic --deps --tar > melodic-robot.rosinstall
+wstool merge melodic-robot.rosinstall -t src
+
 wstool update
 cd ..
 rosdep install --from-paths . --ignore-src --rosdistro melodic -y
