@@ -34,8 +34,15 @@ rosinstall_generator $ROS_PKG --rosdistro $ROS_DISTRO --deps --tar > $ROS_DISTRO
 
 wstool init -j4 src $ROS_DISTRO-$ROS_PKG.rosinstall
 echo "Resolving Dependencies"
+set +e
+RET=1
+until [ ${RET} -eq 0 ]; do
 sudo apt install -y python3-catkin-pkg python3-rosdistro python3-rospkg python3-rosdep-modules python3-rosdep
 rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO -y
+RET=$?
+sleep 10
+done
+set -e
 echo "Building the catkin Workspace"
 ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release
 source ~/ros_catkin_ws/install_isolated/setup.bash
