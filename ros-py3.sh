@@ -5,7 +5,7 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main
 echo "Set up your keys"
 sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
-ROS_PKG=ros_base  #desktop_full,desktop,ros-base se https://www.ros.org/reps/rep-0131.html#variants
+ROS_PKG=desktop_full  #desktop_full,desktop,ros-base se https://www.ros.org/reps/rep-0131.html#variants
 ROS_DISTRO=melodic
 echo "Preparing.."
 export ROS_PYTHON_VERSION=3
