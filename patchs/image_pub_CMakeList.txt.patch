@@ -1,0 +1,19 @@
+diff -ruN ros_org_ws/src/image_pipeline/image_publisher/CMakeLists.txt ros_catkin_ws/src/image_pipeline/image_publisher/CMakeLists.txt
+--- ros_org_ws/src/image_pipeline/image_publisher/CMakeLists.txt	2020-05-19 08:13:26.000000000 +0700
++++ ros_catkin_ws/src/image_pipeline/image_publisher/CMakeLists.txt	2020-06-03 13:08:03.865423783 +0700
+@@ -4,13 +4,13 @@
+ find_package(catkin REQUIRED COMPONENTS cv_bridge dynamic_reconfigure camera_info_manager sensor_msgs image_transport nodelet roscpp)
+ 
+ set(opencv_2_components core highgui)
+-set(opencv_3_components core imgcodecs videoio)
++set(opencv_components core imgcodecs videoio)
+ find_package(OpenCV REQUIRED COMPONENTS core)
+ message(STATUS "opencv version ${OpenCV_VERSION}")
+ if(OpenCV_VERSION VERSION_LESS "3.0.0")
+   find_package(OpenCV 2 REQUIRED COMPONENTS ${opencv_2_components})  
+ else()
+-  find_package(OpenCV 3 REQUIRED COMPONENTS ${opencv_3_components})  
++  find_package(OpenCV REQUIRED COMPONENTS ${opencv_components})  
+ endif()
+ 
+ # generate the dynamic_reconfigure config file

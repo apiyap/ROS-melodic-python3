@@ -1,0 +1,34 @@
+diff -ruN ros_org_ws/src/image_transport_plugins/compressed_depth_image_transport/src/codec.cpp ros_catkin_ws/src/image_transport_plugins/compressed_depth_image_transport/src/codec.cpp
+--- ros_org_ws/src/image_transport_plugins/compressed_depth_image_transport/src/codec.cpp	2018-05-10 20:55:27.000000000 +0700
++++ ros_catkin_ws/src/image_transport_plugins/compressed_depth_image_transport/src/codec.cpp	2020-06-03 13:13:52.016431103 +0700
+@@ -39,15 +39,16 @@
+ 
+ #include <opencv2/highgui/highgui.hpp>
+ 
++
+ #include "cv_bridge/cv_bridge.h"
+ #include "compressed_depth_image_transport/codec.h"
+ #include "compressed_depth_image_transport/compression_common.h"
+ #include "ros/ros.h"
+ 
+ // If OpenCV3
+-#ifndef CV_VERSION_EPOCH
++//#ifndef CV_VERSION_EPOCH
+ #include <opencv2/imgcodecs.hpp>
+-#endif
++//#endif
+ 
+ namespace enc = sensor_msgs::image_encodings;
+ using namespace cv;
+@@ -135,7 +136,11 @@
+       // Decode raw image
+       try
+       {
++        #if CV_MAJOR_VERSION > 3
++        cv_ptr->image = cv::imdecode(imageData, IMREAD_UNCHANGED);
++        #else
+         cv_ptr->image = cv::imdecode(imageData, CV_LOAD_IMAGE_UNCHANGED);
++        #endif
+       }
+       catch (cv::Exception& e)
+       {
