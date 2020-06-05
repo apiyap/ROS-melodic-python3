@@ -7,6 +7,15 @@ from [here->>](https://github.com/apiyap/buildOpenCV3)
 chmod +x ros-py3.sh
 ./ros-py3.sh
 </pre>
+
+# ROS melodic python3 & openCV 4.3
+
+Install OpenCV 4.3.0 [here>>](https://github.com/apiyap/buildOpenCV4.3)
+<pre>
+chmod +x ros-py3-cv4.3.sh
+./ros-py3-cv4.3.sh
+</pre>
+
 # Install additional packages
 Please see package name from. https://github.com/ros/rosdistro/blob/master/melodic/distribution.yaml
 
