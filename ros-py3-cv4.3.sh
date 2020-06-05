@@ -37,7 +37,7 @@ wstool init -j4 src $ROS_DISTRO-$ROS_PKG.rosinstall
 
 echo "Update patch..."
 cd ~
-patch -N -p1 -d ~/ros_org_ws < $WHEREAMI'/patchs/opencv4.3.0.patch'
+patch -N -p1 -d ~/ros_catkin_ws < $WHEREAMI'/patchs/opencv4.3.0.patch'
 cd ~/ros_catkin_ws
 
 echo "Resolving Dependencies"
