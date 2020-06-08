@@ -53,16 +53,9 @@ set -e
 
 echo "Building the catkin Workspace"
 ./src/catkin/bin/catkin_make_isolated 
-source ~/ros_catkin_ws/install_isolated/setup.bash
-echo "Update the workspace"
-mv -i $ROS_DISTRO-$ROS_PKG.rosinstall $ROS_DISTRO-$ROS_PKG.rosinstall.old
-rosinstall_generator $ROS_PKG --rosdistro $ROS_DISTRO --deps --tar > $ROS_DISTRO-$ROS_PKG.rosinstall
-diff -u $ROS_DISTRO-$ROS_PKG.rosinstall $ROS_DISTRO-$ROS_PKG.rosinstall.old
-wstool merge -t src $ROS_DISTRO-$ROS_PKG.rosinstall
-wstool update -t src
 
 echo "Rebuild your workspace"
-./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release
+./src/catkin/bin/catkin_make_isolated --install
 echo "source ~/ros_catkin_ws/install_isolated/setup.bash" >> ~/.bashrc
 echo "export PATH=$PATH:~/ros_catkin_ws/install_isolated/bin:~/ros_catkin_ws/install_isolated/lib" >> ~/.bashrc
 echo "export ROS_PYTHON_VERSION=3" >> ~/.bashrc
